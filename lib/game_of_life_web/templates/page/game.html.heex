@@ -1,0 +1,44 @@
+<container class="main">
+<h2>Conway's Game of Life</h2>
+<section class="options">
+  <div class="grid-size-selector">
+    <button class="btn" phx-click="set-size" phx-value-size="5">5X5</button>
+    <button class="btn" phx-click="set-size" phx-value-size="10">10X10</button>
+    <button class="btn" phx-click="set-size" phx-value-size="20">20X20</button>
+    <button class="btn" phx-click="set-size" phx-value-size="50">50X50</button>
+  </div>
+  <form class="probability" phx-change="chg-prob" onsubmit="return false;">
+    <div>
+      <h4>Probability: 0.<%= @gen_prob  %></h4>
+      <input class="range" id="a" max="10" min="0" name="slider" type="range" value={@gen_prob}>
+    </div>
+  </form>
+  <button class="btn" type="button" phx-click="randomize" name="randomize">Randomize</button>
+  <button class="btn" type="button" phx-click={ if @game_state == :playing do "stop" else "go" end } name="go"><%= if @game_state == :playing do "Stop" else "GO!" end %></button>
+</section>
+<section class={ 
+  case @grid_size do
+    5 -> "game-grid game-grid-5" 
+    10 -> "game-grid game-grid-10" 
+    20 -> "game-grid game-grid-20"
+    50 -> "game-grid game-grid-50"
+    _ -> "game-grid"
+  end
+}>
+  <%=
+   if @grid_data != nil do
+     game_grid = Conway.LiveGame.print(@grid_data)
+     for row <- game_grid do
+       for cell <- row do
+         case cell do
+           "cell" -> raw "<span class=\"cell\"><\/span>"
+           "active-cell" -> raw "<span class=\"active-cell\"><\/span>"
+         end
+       end
+     end
+   else
+    ""
+   end
+  %>
+</section>
+</container>

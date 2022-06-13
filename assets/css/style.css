@@ -1,0 +1,81 @@
+.game-grid{
+  display: grid;
+  grid-gap: 5px;
+  width: fit-content;
+}
+
+.game-grid-5{
+  grid-template-columns: repeat(5, auto)
+}
+
+.game-grid-10{
+  grid-template-columns: repeat(10, auto)
+}
+
+.game-grid-20{
+  grid-template-columns: repeat(20, auto)
+}
+
+.game-grid-50{
+  grid-template-columns: repeat(50, auto)
+}
+
+.cell{
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+}
+
+.active-cell{
+  border: 2px solid white;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+input{
+  -webkit-appearance: none;
+  width: auto;
+  height: 15px;
+  background: #000;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+body{
+  background-color: black;
+}
+.btn{
+  border: 2px solid white;
+  color: white;
+  padding: 4px;
+  background-color: black;
+}
+
+.options{
+  display:flex;
+  flex-direction: column;
+  width: 15%;
+  padding: 8px;
+}
+.main{
+  font-family: Arial, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-size-selector{
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 8px;
+}
+
+.probability{
+  display: flex;
+  padding-bottom: 8px;
+  justify-content: center;
+  text-align: center;
+}
