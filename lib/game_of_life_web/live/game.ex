@@ -34,7 +34,7 @@ defmodule GameOfLifeWeb.GameLive do
 
   def handle_event("randomize", _values, socket) do
     grid_data = Conway.Grid.new(socket.assigns.grid_size, socket.assigns.gen_prob)
-    GameOfLifeWeb.Endpoint.broadcast_from(self(), @topic, "update-grid", %{grid_data: grid_data})
+    GameOfLifeWeb.Endpoint.broadcast_from(self(), @topic, "update-grid", %{grid_data: grid_data, grid_size: socket.assigns.grid_size})
     {:noreply, assign(socket, grid_data: grid_data)}
   end
 
