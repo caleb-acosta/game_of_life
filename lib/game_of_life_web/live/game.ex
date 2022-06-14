@@ -71,6 +71,7 @@ defmodule GameOfLifeWeb.GameLive do
         String.to_integer(cell_row)
       )
 
+    GameOfLifeWeb.Endpoint.broadcast_from(self(), @topic, "update-grid", %{grid_data: grid_data})
     {:noreply, assign(socket, grid_data: grid_data)}
   end
 
