@@ -95,6 +95,18 @@ defmodule Conway.Grid do
     end
     |> Sum.value()
   end
+
+  def switch_cell_status(grid, x, y) do
+    new_status =
+      if cell_status(grid, x, y) == 1 do
+        0
+      else
+        1
+      end
+
+    row = elem(grid.data, y) |> put_elem(x, new_status)
+    %Conway.Grid{data: put_elem(grid.data, y, row)}
+  end
 end
 
 defmodule Conway.LiveGame do
